@@ -1,0 +1,27 @@
+<h1>Hello {$name}!</h1>
+
+<svelte:component this="{Router}"/>
+
+<script>
+  import Homepage from './pages/Homepage.html';
+  import Notfound from './pages/Notfound.html';
+
+  export default {
+    computed: {
+      Router: ({ $page }) => {
+        switch($page) {
+          case 'homepage':
+            return Homepage;
+          default:
+           return Notfound;
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+	h1 {
+		color: purple;
+	}
+</style>

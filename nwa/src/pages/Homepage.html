@@ -1,0 +1,19 @@
+<h1>Ciao belli!</h1>
+<button on:click="fetchx('/optimized.wasm')">Instatiate straming</button>
+<button on:click="fetchx('/optimized.wasm')">Instatiate</button>
+
+<script>
+  export default {
+    methods: {
+      fetchx(url) {
+        async function test() {
+          let importObject = { imports: { imported_func: arg => console.log(arg) } };
+          const wasm = await WebAssembly.instantiateStreaming(fetch(url), importObject);
+          console.log(wasm.instance.exports.add(2,3))
+        }
+
+        test();
+      }
+    }
+  }
+</script>
